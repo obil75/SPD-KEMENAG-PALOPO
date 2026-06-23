@@ -131,7 +131,6 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
               {/* Official Garland/Logo */}
               <KemenagLogo size={85} className="mb-2" />
               <h1 className="text-base font-bold tracking-widest leading-none">KEMENTERIAN AGAMA</h1>
-              <div className="h-5"></div>
             </div>
 
             {/* Main Metadata Grid - Sub Header with absolute positioning/flex alignment */}
@@ -368,7 +367,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
           </div>
 
           {/* Page 1 Signature Section */}
-          <div className="flex justify-end text-xs mt-10 mb-2">
+          <div className="flex justify-end text-xs mt-5 mb-2">
             <div className="w-80 space-y-0.5 bg-white pl-4 leading-normal">
               <div className="flex">
                 <span className="w-[130px] shrink-0">Dikeluarkan di</span>
@@ -414,14 +413,14 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
               {/* Left Box (Empty cushion) */}
               <div className="w-1/2 border-r border-black p-2 py-1.5 flex flex-col justify-between"></div>
               {/* Right Box (Departure from station) */}
-              <div className="w-1/2 p-2 py-1.5 space-y-1">
+              <div className="w-1/2 p-2 py-1 space-y-0.5">
                 <div className="grid grid-cols-12 gap-1">
                   <span className="col-span-1">I.</span>
                   <span className="col-span-4 font-semibold">Berangkat dari</span>
                   <span className="col-span-1">:</span>
                   <span className="col-span-6 font-bold">{sppd.tempatBerangkat}</span>
                 </div>
-                <div className="grid grid-cols-12 gap-1 text-[9.5px] text-gray-500 italic leading-none">
+                <div className="grid grid-cols-12 gap-1 text-[9px] text-gray-500 italic -mt-1 leading-none">
                   <span className="col-span-1"></span>
                   <span className="col-span-4">(Tempat Kedudukan)</span>
                   <span className="col-span-1"></span>
@@ -474,7 +473,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -512,7 +511,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -547,7 +546,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -585,7 +584,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -620,7 +619,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -658,7 +657,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -693,7 +692,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -731,7 +730,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                 </div>
                 
                 <div className="pt-2 w-[85%] mx-auto leading-none flex flex-col items-center">
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <div className="text-left w-fit max-w-full">
                     <p className="text-[9px]">( _________________________________________ )</p>
                     <p className="font-mono text-[8.5px] mt-1 pl-1">NIP: </p>
@@ -788,7 +787,6 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
             <div className="flex border-b border-black text-[9.5px] min-h-[35px] p-2">
               <div className="w-full">
                 <span className="font-bold uppercase tracking-wider block text-[9px]">VII. Catatan Lain-lain:</span>
-                <p className="text-gray-400 italic text-[8.5px] mt-0.5 leading-none">Tulis catatan tambahan di sini apabila diperlukan oleh auditor keuangan...</p>
               </div>
             </div>
 
