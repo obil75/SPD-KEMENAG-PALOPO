@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { motion } from "motion/react";
 import Sidebar from "./components/Sidebar";
 import PegawaiManager from "./components/PegawaiManager";
 import ReferensiManager from "./components/ReferensiManager";
@@ -190,7 +191,13 @@ export default function App() {
         {/* Top Header Panel */}
         <header className="hidden md:flex h-16 bg-white border-b border-[#E5E2DD] items-center justify-between px-8 shrink-0 shadow-xs">
           <div className="flex items-center gap-4">
-            <h2 className="text-lg font-serif italic text-[#1B3022] font-semibold">Layanan Surat Perjalanan Dinas</h2>
+            <motion.h2 
+              animate={{ opacity: [1, 0.25, 1] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "easeInOut" }}
+              className="text-lg font-serif italic text-[#1B3022] font-semibold"
+            >
+              Surat Perintah Perjalanan Dinas
+            </motion.h2>
           </div>
         </header>
 

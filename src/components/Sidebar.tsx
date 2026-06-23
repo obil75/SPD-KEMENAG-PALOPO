@@ -93,7 +93,7 @@ export default function Sidebar({
 
         {/* Footer info */}
         <div className="p-6 bg-[#15261B] text-[10px] uppercase tracking-widest text-[#E0E7E1]/40 text-center border-t border-[#2A4533]">
-          Versi 2.4.0 &copy; 2026
+          Obil Official &copy; 2026
         </div>
       </aside>
 

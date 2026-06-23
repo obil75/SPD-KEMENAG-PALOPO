@@ -98,23 +98,30 @@ export default function ReferensiManager({ referensi, setReferensi }: ReferensiM
         </div>
 
         {/* 2. Pejabat Pembuat Komitmen (3 PPK) Section */}
-        <div className="space-y-6">
+        <div className="space-y-4">
           <div className="flex items-center gap-2">
             <Shield size={20} className="text-[#1B3022]" />
             <h3 className="text-lg font-bold text-gray-900">Pejabat Pembuat Komitmen (PPK)</h3>
             <span className="rounded-full bg-[#E0E7E1]/60 text-[#1B3022] text-xs font-semibold px-2.5 py-1 border border-[#2A4533]/15">
-              Terdapat 3 Pejabat
+              3 Pejabat
             </span>
           </div>
 
-          <div className="space-y-6">
+          <div className="rounded-2xl border border-[#E5E2DD] bg-white shadow-xs overflow-hidden">
             {ppkList.map((ppk, idx) => (
-              <div
-                key={ppk.id}
-                className="rounded-2xl border border-[#E5E2DD] bg-white shadow-xs overflow-hidden"
+              <div 
+                key={ppk.id} 
+                className={idx > 0 ? "border-t border-[#E5E2DD] p-6" : "p-6"}
               >
-                {/* Form fields in 3 columns - styled exactly like Kepala Kantor */}
-                <div className="p-6 grid grid-cols-1 md:grid-cols-3 gap-6">
+                <div className="flex items-center gap-2 mb-3">
+                  <div className="h-5 w-5 rounded-full bg-[#E0E7E1] flex items-center justify-center text-[#1B3022] text-xs font-bold font-mono">
+                    {idx + 1}
+                  </div>
+                  <h4 className="text-xs font-bold text-[#1B3022] uppercase tracking-wider">Pejabat Pembuat Komitmen {idx + 1}</h4>
+                </div>
+                
+                {/* Form fields in 3 columns */}
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
                   <div className="space-y-1.5">
                     <label className="text-xs font-semibold text-gray-700 block">Nama Pejabat (PPK)</label>
                     <input
