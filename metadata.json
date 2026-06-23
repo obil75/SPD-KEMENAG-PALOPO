@@ -1,0 +1,6 @@
+{
+  "name": "SPPD Kemenag Palopo",
+  "description": "Sistem Pembuatan Surat Perjalanan Dinas (SPPD) Kantor Kementerian Agama Kota Palopo",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
