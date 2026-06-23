@@ -21,13 +21,15 @@ export default function SppdForm({
 }: SppdFormProps) {
   // Helper to generate next nomor SPPD
   const getNextNomor = (dateStr: string) => {
-    let maxNum = 170; // default start
+    let maxNum = 0; // default start
+    let hasValidNum = false;
     if (sppdS && sppdS.length > 0) {
       sppdS.forEach(s => {
         if (s.nomor) {
           const parts = s.nomor.split("/");
           const firstPart = parseInt(parts[0], 10);
           if (!isNaN(firstPart)) {
+            hasValidNum = true;
             if (firstPart > maxNum) {
               maxNum = firstPart;
             }
@@ -35,7 +37,12 @@ export default function SppdForm({
         }
       });
     }
-    const nextPrefix = maxNum + 1;
+    // If no valid numbers exist in current records, fallback to 170
+    if (!hasValidNum) {
+      maxNum = 170;
+    }
+    const nextVal = maxNum + 1;
+    const nextPrefix = String(nextVal).padStart(3, "0");
     const dateParts = dateStr.split("-");
     const formattedYear = dateParts[0] || "2026";
     const formattedMonth = dateParts[1] || "06";
