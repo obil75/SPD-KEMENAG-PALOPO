@@ -111,9 +111,9 @@ export default function ReferensiManager({ referensi, setReferensi }: ReferensiM
             {ppkList.map((ppk, idx) => (
               <div 
                 key={ppk.id} 
-                className={idx > 0 ? "border-t border-[#E5E2DD] p-6" : "p-6"}
+                className={idx > 0 ? "border-t border-[#E5E2DD] px-5 py-3.5" : "px-5 py-3.5"}
               >
-                <div className="flex items-center gap-2 mb-3">
+                <div className="flex items-center gap-2 mb-2">
                   <div className="h-5 w-5 rounded-full bg-[#E0E7E1] flex items-center justify-center text-[#1B3022] text-xs font-bold font-mono">
                     {idx + 1}
                   </div>
@@ -121,34 +121,34 @@ export default function ReferensiManager({ referensi, setReferensi }: ReferensiM
                 </div>
                 
                 {/* Form fields in 3 columns */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-gray-700 block">Nama Pejabat (PPK)</label>
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-semibold text-gray-600 block">Nama Pejabat (PPK)</label>
                     <input
                       type="text"
-                      className="w-full rounded-xl border border-[#E5E2DD] bg-gray-50/50 px-4 py-2.5 text-sm text-gray-900 focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A] outline-none transition font-semibold"
+                      className="w-full rounded-xl border border-[#E5E2DD] bg-gray-50/50 px-3 py-1.5 text-sm text-gray-900 focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A] outline-none transition font-semibold"
                       value={ppk.nama}
                       onChange={(e) => handlePpkChange(idx, "nama", e.target.value)}
                       required
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-gray-700 block">NIP Pejabat (PPK)</label>
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-semibold text-gray-600 block">NIP Pejabat (PPK)</label>
                     <input
                       type="text"
-                      className="w-full rounded-xl border border-[#E5E2DD] bg-gray-50/50 px-4 py-2.5 text-xs font-mono text-gray-900 focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A] outline-none transition"
+                      className="w-full rounded-xl border border-[#E5E2DD] bg-gray-50/50 px-3 py-1.5 text-xs font-mono text-gray-900 focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A] outline-none transition"
                       value={ppk.nip}
                       onChange={(e) => handlePpkChange(idx, "nip", e.target.value.replace(/[^0-9]/g, ""))}
                       required
                     />
                   </div>
 
-                  <div className="space-y-1.5">
-                    <label className="text-xs font-semibold text-gray-700 block">Unit Kerja / Bagian</label>
+                  <div className="space-y-1">
+                    <label className="text-[11px] font-semibold text-gray-600 block">Unit Kerja / Bagian</label>
                     <input
                       type="text"
-                      className="w-full rounded-xl border border-[#E5E2DD] bg-gray-50/50 px-4 py-2.5 text-sm text-gray-900 focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A] outline-none transition"
+                      className="w-full rounded-xl border border-[#E5E2DD] bg-gray-50/50 px-3 py-1.5 text-sm text-gray-900 focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A] outline-none transition"
                       value={ppk.unitKerja}
                       onChange={(e) => handlePpkChange(idx, "unitKerja", e.target.value)}
                       required

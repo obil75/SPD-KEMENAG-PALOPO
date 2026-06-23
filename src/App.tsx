@@ -202,10 +202,11 @@ export default function App() {
         </header>
 
         {/* Dynamic Navigational Stage wrapper */}
-        <main className="flex-1 p-4 md:p-8 max-w-7xl w-full mx-auto">
+        <main className="flex-1 pt-2 md:pt-4 pb-4 md:pb-8 px-4 md:px-8 max-w-7xl w-full mx-auto">
           {isFormOpen ? (
             <SppdForm
               sppdToEdit={currentEditSppd}
+              sppdS={sppdS}
               pegawaiList={pegawai}
               referensi={referensi}
               onSave={handleSaveSppd}

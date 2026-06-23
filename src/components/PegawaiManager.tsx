@@ -129,7 +129,7 @@ export default function PegawaiManager({ pegawai, setPegawai }: PegawaiManagerPr
   });
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-3.5">
       {/* Notification Toast */}
       {notification && (
         <div className="fixed bottom-6 right-6 z-50 flex items-center gap-3 rounded-xl bg-[#15261B] text-white px-5 py-4 shadow-xl transition-all duration-300 animate-slide-up">
@@ -141,22 +141,22 @@ export default function PegawaiManager({ pegawai, setPegawai }: PegawaiManagerPr
       )}
 
       {/* Control/Search Bar & Add Button */}
-      <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="rounded-xl border border-gray-100 bg-white px-4 py-2.5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="relative w-full max-w-md">
-          <Search className="absolute top-3.5 left-4 text-gray-400" size={18} />
+          <Search className="absolute top-2.5 left-3.5 text-gray-400" size={16} />
           <input
             type="text"
             placeholder="Cari pegawai berdasarkan nama, NIP, jabatan, atau unit kerja..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-xl border border-[#E5E2DD] bg-gray-50/50 py-3 pr-4 pl-12 text-sm text-[#2D2A26] placeholder-gray-400 outline-hidden transition focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A]"
+            className="w-full rounded-lg border border-[#E5E2DD] bg-gray-50/50 py-1.5 pr-4 pl-10 text-sm text-[#2D2A26] placeholder-gray-400 outline-hidden transition focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A]"
           />
         </div>
         <button
           onClick={handleOpenAdd}
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1B3022] hover:bg-[#2A4533] text-white px-5 py-3 font-semibold transition shadow-md hover:shadow-lg shrink-0"
+          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#1B3022] hover:bg-[#2A4533] text-white px-3 py-1.5 text-xs font-semibold transition shadow-sm hover:shadow-md shrink-0"
         >
-          <Plus size={18} />
+          <Plus size={14} />
           <span>Tambah Pegawai</span>
         </button>
       </div>

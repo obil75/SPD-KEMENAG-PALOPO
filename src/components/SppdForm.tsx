@@ -4,6 +4,7 @@ import { Sppd, Pegawai, Referensi, Pengikut } from "../types";
 
 interface SppdFormProps {
   sppdToEdit: Sppd | null;
+  sppdS: Sppd[];
   pegawaiList: Pegawai[];
   referensi: Referensi;
   onSave: (sppd: Sppd) => void;
@@ -12,14 +13,45 @@ interface SppdFormProps {
 
 export default function SppdForm({
   sppdToEdit,
+  sppdS,
   pegawaiList,
   referensi,
   onSave,
   onCancel,
 }: SppdFormProps) {
+  // Helper to generate next nomor SPPD
+  const getNextNomor = (dateStr: string) => {
+    let maxNum = 170; // default start
+    if (sppdS && sppdS.length > 0) {
+      sppdS.forEach(s => {
+        if (s.nomor) {
+          const parts = s.nomor.split("/");
+          const firstPart = parseInt(parts[0], 10);
+          if (!isNaN(firstPart)) {
+            if (firstPart > maxNum) {
+              maxNum = firstPart;
+            }
+          }
+        }
+      });
+    }
+    const nextPrefix = maxNum + 1;
+    const dateParts = dateStr.split("-");
+    const formattedYear = dateParts[0] || "2026";
+    const formattedMonth = dateParts[1] || "06";
+    return `${nextPrefix}/Kk.21.14/1-b/KU.02.1/${formattedMonth}/${formattedYear}`;
+  };
+
   // Form states
   const [id] = useState(sppdToEdit?.id || "sppd-" + Date.now().toString());
-  const [nomor, setNomor] = useState(sppdToEdit?.nomor || "");
+  const [isNomorTouched, setIsNomorTouched] = useState(false);
+  const [nomor, setNomor] = useState(() => {
+    if (sppdToEdit) {
+      return sppdToEdit.nomor || "";
+    }
+    const initialDate = new Date().toISOString().split("T")[0];
+    return getNextNomor(initialDate);
+  });
   const [lembarKe, setLembarKe] = useState(sppdToEdit?.lembarKe || "I / II / III / IV");
   const [kodeNo, setKodeNo] = useState(sppdToEdit?.kodeNo || "-");
   
@@ -59,6 +91,13 @@ export default function SppdForm({
   const [tanggalDikeluarkan, setTanggalDikeluarkan] = useState(
     sppdToEdit?.tanggalDikeluarkan || new Date().toISOString().split("T")[0]
   );
+
+  // Auto update month and year when tanggalDikeluarkan changes (if new SPPD and user has not typed manual Nomor)
+  useEffect(() => {
+    if (!sppdToEdit && !isNomorTouched) {
+      setNomor(getNextNomor(tanggalDikeluarkan));
+    }
+  }, [tanggalDikeluarkan, isNomorTouched, sppdToEdit]);
 
   // Setup automatically if adding / choosing a Pegawai
   const handlePegawaiSelect = (id: string) => {
@@ -130,14 +169,6 @@ export default function SppdForm({
       }
     }
   };
-
-  // Autogenerate SPPD number model if none exists
-  useEffect(() => {
-    if (!sppdToEdit?.nomor) {
-      const parts = "168/Kk.21.14/1-b/KU.02.1/06/2026";
-      setNomor(parts);
-    }
-  }, []);
 
   // Sync date changes to "Lama Perjalanan" if both are set!
   useEffect(() => {
@@ -252,21 +283,8 @@ export default function SppdForm({
 
               {/* Sub-bagian A: Identitas & Penomoran */}
               <div className="space-y-4">
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                <div className="space-y-1.5">
-                  <label className="text-xs font-semibold text-gray-700">Nomor SPPD <span className="text-red-500">*</span></label>
-                  <input
-                    type="text"
-                    className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 py-2.5 text-sm text-gray-900 font-mono focus:border-[#BFA07A] focus:bg-white outline-hidden transition"
-                    placeholder="Contoh: 168/Kk.21.14/1-b/KU.02.1/06/2021"
-                    value={nomor}
-                    onChange={(e) => setNomor(e.target.value)}
-                    required
-                  />
-                </div>
-
-                <div className="grid grid-cols-2 gap-3">
-                  <div className="space-y-1.5">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-4">
+                  <div className="md:col-span-4 space-y-1.5">
                     <label className="text-xs font-semibold text-gray-700">Tanggal Dikeluarkan <span className="text-red-500">*</span></label>
                     <input
                       type="date"
@@ -277,7 +295,22 @@ export default function SppdForm({
                     />
                   </div>
 
-                  <div className="space-y-1.5">
+                  <div className="md:col-span-5 space-y-1.5">
+                    <label className="text-xs font-semibold text-gray-700">Nomor SPPD <span className="text-red-500">*</span></label>
+                    <input
+                      type="text"
+                      className="w-full rounded-xl border border-gray-200 bg-gray-50/50 px-3.5 py-2.5 text-sm text-gray-900 font-mono focus:border-[#BFA07A] focus:bg-white outline-hidden transition"
+                      placeholder="Contoh: 168/Kk.21.14/1-b/KU.02.1/06/2021"
+                      value={nomor}
+                      onChange={(e) => {
+                        setNomor(e.target.value);
+                        setIsNomorTouched(true);
+                      }}
+                      required
+                    />
+                  </div>
+
+                  <div className="md:col-span-3 space-y-1.5">
                     <label className="text-xs font-semibold text-gray-700">Dikeluarkan di <span className="text-red-500">*</span></label>
                     <input
                       type="text"
@@ -290,7 +323,6 @@ export default function SppdForm({
                   </div>
                 </div>
               </div>
-            </div>
 
             {/* Sub-bagian B: Pegawai Pelaksana */}
             <div className="border-t border-gray-100 pt-5 space-y-4">

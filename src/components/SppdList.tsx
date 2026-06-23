@@ -60,26 +60,40 @@ export default function SppdList({
     );
   });
 
+  const sorted = [...filtered].sort((a, b) => {
+    const dateA = a.tanggalBerangkat || "";
+    const dateB = b.tanggalBerangkat || "";
+    if (dateA !== dateB) {
+      return dateA.localeCompare(dateB);
+    }
+    const issueA = a.tanggalDikeluarkan || "";
+    const issueB = b.tanggalDikeluarkan || "";
+    if (issueA !== issueB) {
+      return issueA.localeCompare(issueB);
+    }
+    return (a.nomor || "").localeCompare(b.nomor || "");
+  });
+
   return (
-    <div className="space-y-6">
+    <div className="space-y-3.5">
       {/* Control/Search Bar & Add Button */}
-      <div className="rounded-2xl border border-gray-100 bg-white p-5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
+      <div className="rounded-xl border border-gray-100 bg-white px-4 py-2.5 shadow-xs flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
         <div className="relative w-full max-w-lg">
-          <Search className="absolute top-3.5 left-4 text-gray-400" size={18} />
+          <Search className="absolute top-2.5 left-3.5 text-gray-400" size={16} />
           <input
             type="text"
             placeholder="Cari SPPD berdasarkan nomor, nama pegawai, tujuan, atau maksud perjalanan..."
             value={searchTerm}
             onChange={(e) => setSearchTerm(e.target.value)}
-            className="w-full rounded-xl border border-gray-200 bg-gray-50/50 py-3 pr-4 pl-12 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A]"
+            className="w-full rounded-lg border border-gray-200 bg-gray-50/50 py-1.5 pr-4 pl-10 text-sm text-gray-800 placeholder-gray-400 outline-hidden transition focus:border-[#BFA07A] focus:bg-white focus:ring-1 focus:ring-[#BFA07A]"
           />
         </div>
         <button
           onClick={onAddNew}
           id="btn-add-sppd"
-          className="inline-flex items-center justify-center gap-2 rounded-xl bg-[#1B3022] hover:bg-[#2A4533] text-white px-5 py-3 font-semibold transition shadow-md shrink-0"
+          className="inline-flex items-center justify-center gap-1.5 rounded-lg bg-[#1B3022] hover:bg-[#2A4533] text-white px-3 py-1.5 text-xs font-semibold transition shadow-sm shrink-0"
         >
-          <Plus size={18} />
+          <Plus size={14} />
           <span>Buat SPPD Baru</span>
         </button>
       </div>
@@ -99,7 +113,7 @@ export default function SppdList({
               </tr>
             </thead>
             <tbody className="divide-y divide-gray-100 text-xs">
-              {filtered.map((item, idx) => (
+              {sorted.map((item, idx) => (
                 <tr key={item.id} className="hover:bg-gray-50/50 transition">
                   <td className="px-4 py-4 text-center text-gray-400 font-mono">
                     {idx + 1}
