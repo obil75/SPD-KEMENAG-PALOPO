@@ -742,7 +742,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
             {/* ROW VI (Tiba di / Telah diperiksa - Signatures of PPK) */}
             <div className="flex border-b border-black text-[10px]">
               {/* Left Column (PPK Signature Block 1) */}
-              <div className="w-1/2 border-r border-black p-2 py-1.5 space-y-1 min-h-[125px] flex flex-col justify-between">
+              <div className="w-1/2 border-r border-black p-2 py-1 space-y-0.5 min-h-[105px] flex flex-col justify-between">
                 <div>
                   <div className="grid grid-cols-12 gap-0.5">
                     <span className="col-span-1">VI.</span>
@@ -752,7 +752,7 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                   </div>
                   <p className="pl-4 text-[8.5px] text-gray-500">(Tempat Kedudukan)</p>
                   
-                  <div className="grid grid-cols-12 gap-0.5 mt-1">
+                  <div className="grid grid-cols-12 gap-0.5 mt-0.5">
                     <span className="col-span-1"></span>
                     <span className="col-span-4 font-semibold">Pada Tanggal</span>
                     <span className="col-span-1">:</span>
@@ -760,23 +760,23 @@ export default function SppdPrintReceipt({ sppd, onBack }: SppdPrintReceiptProps
                   </div>
                 </div>
 
-                <div className="pt-2 text-center w-4/5 mx-auto leading-normal">
+                <div className="text-center w-4/5 mx-auto leading-normal">
                   <p className="font-bold text-[9.5px]">Pejabat Pembuat Komitmen</p>
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <p className="font-bold underline text-[10px]">{sppd.ppkNama}</p>
                   <p className="font-mono text-[8.5px] leading-none mt-0.5">Nip. {sppd.ppkNip}</p>
                 </div>
               </div>
 
               {/* Right Column (PPK Signature Block 2 - Inspection Certificate text) */}
-              <div className="w-1/2 p-2 py-1.5 space-y-1 min-h-[125px] flex flex-col justify-between">
+              <div className="w-1/2 p-2 py-1 space-y-0.5 min-h-[105px] flex flex-col justify-between">
                 <p className="leading-tight text-[9px] text-justify font-sans">
                   Telah diperiksa dengan keterangan bahwa perjalanan tersebut atas perintahnya dan semata-mata untuk kepentingan jabatan dalam waktu yang sesingkat-singkatnya.
                 </p>
 
-                <div className="pt-2 text-center w-4/5 mx-auto leading-normal">
+                <div className="text-center w-4/5 mx-auto leading-normal">
                   <p className="font-bold text-[9.5px]">Pejabat Pembuat Komitmen</p>
-                  <div className="h-14"></div>
+                  <div className="h-10"></div>
                   <p className="font-bold underline text-[10px]">{sppd.ppkNama}</p>
                   <p className="font-mono text-[8.5px] leading-none mt-0.5">Nip. {sppd.ppkNip}</p>
                 </div>
